@@ -1,32 +1,24 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
+import { Link, useHistory } from "react-router-dom";
 // @material-ui/core components
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import {
-  Input,
-  InputLabel,
-  TextField,
-  textArea,
-  MenuItem,
-  FormControlLabel,
-  Radio,
-} from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 import Card from "@material-ui/core/Card";
-import Datetime from "react-datetime";
 import CardActions from "@material-ui/core/CardActions";
-
-import FormControl from "@material-ui/core/FormControl";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-
 import CardBody from "@material-ui/core/CardMedia";
 import Rating from "@material-ui/lab/Rating";
 import Box from "@material-ui/core/Box";
 import Paginations from "components/Pagination/Pagination.js";
 
-// @material-ui/icons
+// Pages
+import SectionPreFooter from "../Components/Sections/SectionPreFooter";
+import Footer from "components/Footer/Footer.js";
+import Parallax from "components/Parallax/Parallax.js";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -36,15 +28,13 @@ import IconButton from "@material-ui/core/IconButton";
 import imagePro1 from "assets/img/faces/card-profile1-square.jpg";
 import imagePro2 from "assets/img/faces/marc.jpg";
 import imagePro3 from "assets/img/faces/christian.jpg";
-
-import styles from "assets/jss/material-kit-react/views/componentsSections/typographyStyle.js";
-
 import { DatePicker, TimePicker, DateTimePicker } from "@material-ui/pickers";
-
 import { container, title } from "assets/jss/material-kit-react.js";
 import lightBlue from "@material-ui/core/colors/lightBlue";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
+import SnackbarContent from "components/Snackbar/SnackbarContent.js";
+import Check from "@material-ui/icons/Check";
 
 // Imports for modale
 
@@ -57,6 +47,9 @@ import Slide from "@material-ui/core/Slide";
 // @material-ui/icons
 import LibraryBooks from "@material-ui/icons/LibraryBooks";
 import Close from "@material-ui/icons/Close";
+
+// API
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -144,7 +137,18 @@ const materialTheme = createMuiTheme({
     },
   },
 });
-export default function DisplayResultsPage() {
+export default function DisplayResultsPage(props) {
+  
+  //props
+
+  const {datas}= props.location
+  console.log("datas : ", datas)
+ 
+  
+  
+    // History
+
+  let history = useHistory();
   //CSS
   const classes = useStyles();
   const theme = useTheme();
@@ -162,6 +166,8 @@ export default function DisplayResultsPage() {
 
   const [expanded, setExpanded] = React.useState(false);
   const [sexpanded, setSexpanded] = React.useState(false);
+  const [bookingStatus, setBookingStatus] = useState(false);
+  const [idPro,setIdPro]= useState();
   const [open, setOpen] = useState(false);
 
   //Date picker
@@ -179,19 +185,33 @@ export default function DisplayResultsPage() {
 
   Transition.displayName = "Transition";
 
-    // Send Booking to API
+  // Send Booking to API
 
-    const sendBooking = (e) => {
- 
-        setClassicModal(false)
-        // insert API CALL
-    }
+  const sendBooking = (e) => {
+    setClassicModal(false);
+    // insert API CALL
 
+    
 
+    axios
+      .post("http://localhost:3002/front", {
+        motif_intervention: `${datas.motif}`,
+        date: selectedDate,
+        immat: `${datas.immat}`,
+        email: `${datas.email}`,
+        categorie: `${datas.categorie}`,
+        pro: idPro,
+      })
+      .then((response) => {
+        setBookingStatus(true);
 
-
-
-
+        setTimeout(() => {
+          setBookingStatus(false);
+          history.push("/");
+        }, 3000);
+      })
+      .catch((err) => console.log("err :", err));
+  };
 
   // Picker
   const [selectedDate, SetSelectedDate] = useState(new Date());
@@ -199,12 +219,19 @@ export default function DisplayResultsPage() {
   // Handle click on date picker to book
 
   const displayConfirmationDate = (date) => {
+    
     SetSelectedDate(date);
     setClassicModal(true);
   };
 
   return (
     <>
+      {/* // Header */}
+
+      <Parallax image={require("assets/img/cars/13.png")}>
+        <div className={classes.container}></div>
+      </Parallax>
+
       {/* Display modal when booking  */}
       <GridContainer>
         <GridItem xs={12} sm={12} md={6} lg={4}>
@@ -232,7 +259,7 @@ export default function DisplayResultsPage() {
                 color="inherit"
                 onClick={() => setClassicModal(false)}
               >
-                <Close className={classes.modalClose}  />
+                <Close className={classes.modalClose} />
               </IconButton>
               <h4 className={classes.modalTitle}>
                 Confirmation consultation vidéo
@@ -267,6 +294,24 @@ export default function DisplayResultsPage() {
         </GridItem>
       </GridContainer>
 
+      {/* // Display toaster if booking is success */}
+
+      {bookingStatus ? (
+        <SnackbarContent
+          message={
+            <span>
+              <b>SUCCESS :</b> Votre réservation a bien été prise en compte,
+              vous allez reçevoir un email de confirmation...
+            </span>
+          }
+          close
+          color="success"
+          icon={Check}
+        />
+      ) : (
+        ""
+      )}
+
       {/* Display professionals listing */}
       <div className={classes.sections}>
         <div>
@@ -294,7 +339,7 @@ export default function DisplayResultsPage() {
                       <Rating value={5} readOnly />
                     </Box>
                     <Button color="primary">Détails</Button>
-                    <Button color="info">Détails</Button>
+                    <Button color="info">Appeler</Button>
                   </CardBody>
                   <div className={classes.controls}>
                     <CardActions
@@ -314,9 +359,12 @@ export default function DisplayResultsPage() {
                         <DateTimePicker
                           renderInput={(props) => <TextField {...props} />}
                           label="Rendez-vous"
+                          id={1}
                           value={selectedDate}
                           fullWidth
-                          onChange={(date) => displayConfirmationDate(date)}
+                          onChange={(date) => { 
+                              setIdPro(1)
+                              displayConfirmationDate(date)}}
                         />
                       </ThemeProvider>
                     </CardActions>
@@ -347,7 +395,7 @@ export default function DisplayResultsPage() {
                       <Rating value={5} readOnly />
                     </Box>
                     <Button color="primary">Détails</Button>
-                    <Button color="info">Détails</Button>
+                    <Button color="info">Appeler</Button>
                   </CardBody>
                   <div className={classes.controls}>
                     <CardActions disableSpacing className={classes.content}>
@@ -361,8 +409,11 @@ export default function DisplayResultsPage() {
                         <DateTimePicker
                           renderInput={(props) => <TextField {...props} />}
                           label="Rendez-vous"
+                          id={2}
                           value={selectedDate}
-                          onChange={(date) => SetSelectedDate(date)}
+                          onChange={(date) => {
+                            setIdPro(2)
+                            displayConfirmationDate(date)}}
                         />
                       </ThemeProvider>
                     </CardActions>
@@ -408,8 +459,11 @@ export default function DisplayResultsPage() {
                         <DateTimePicker
                           renderInput={(props) => <TextField {...props} />}
                           label="Rendez-vous"
+                          id={3}
                           value={selectedDate}
-                          onChange={(date) => SetSelectedDate(date)}
+                          onChange={(date) => {
+                            setIdPro(3)  
+                            displayConfirmationDate(date)}}
                         />
                       </ThemeProvider>
                     </CardActions>
@@ -441,7 +495,9 @@ export default function DisplayResultsPage() {
             </GridItem>
           </GridContainer>
         </div>
+        <SectionPreFooter></SectionPreFooter>
       </div>
+      <Footer />
     </>
   );
 }

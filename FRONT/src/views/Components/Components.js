@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react components for routing our app without refresh
@@ -43,6 +43,8 @@ import SectionPreFooter from "./Sections/SectionPreFooter";
 import styles from "assets/jss/material-kit-react/views/components.js";
 import Image from "react-bootstrap/Image";
 import LoginPage from "views/LoginPage/LoginPage.js";
+import TextField from "@material-ui/core/TextField";
+import clsx from "clsx";
 
 // Own style
 require("../../assets/css/homepage.css");
@@ -52,6 +54,8 @@ const useStyles = makeStyles(styles);
 export default function Components(props) {
   const classes = useStyles();
   const { ...rest } = props;
+
+  const [immat, setImmat] = useState("");
   return (
     <div>
       <Header
@@ -77,36 +81,49 @@ export default function Components(props) {
                 </h3>
               </div>
               <br />
-
-              <CustomInput
+              <TextField
                 labelText="Entrez votre immatriculation"
-                white
+                className="whiteInput"
                 pattern="^([A-HJ-NP-TV-Z]{2}|[0-9]{3,4})-?([A-HJ-NP-TV-Z]{2,3}|[0-9]{3})-?([A-HJ-NP-TV-Z]{2}|[0-9]{2})$"
-                inputProps={{
-                  className: "whiteInput",
-                  type:'text',
-                  pattern:"^([A-HJ-NP-TV-Z]{2}|[0-9]{3,4})-?([A-HJ-NP-TV-Z]{2,3}|[0-9]{3})-?([A-HJ-NP-TV-Z]{2}|[0-9]{2})$",
+                value={immat}
+                id="standard-start-adornment"
+                onChange={(e) => {
+                 
+                  setImmat(e.target.value);
+                }}
+                className={clsx(classes.margin, classes.textField)}
+                InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
                       <Check style={{ color: "white" }} />
                     </InputAdornment>
                   ),
+                  className: "whiteInput",
+                  type: "text",
                 }}
               />
+              
 
-              <Link to="/form-page">
-                <Button color="info" className='callToAction'>Démarrer</Button>
+              <Link to={{
+                
+                pathname: "/form-page",
+            immatriculation:immat
+            }}>
+                <Button color="info" className="callToAction">
+                  Démarrer
+                </Button>
               </Link>
             </GridItem>
           </GridContainer>
         </div>
       </Parallax>
-      
+
       <div className={classNames(classes.main, classes.mainRaised)}>
-      <br/>
+        <br />
         <SectionHowItWorks
           image={require("assets/img/faces/avatar.jpg")}
-        ></SectionHowItWorks><br/>
+        ></SectionHowItWorks>
+        <br />
         <SectionLastConsultations
           image={require("assets/img/cars/13.png")}
         ></SectionLastConsultations>

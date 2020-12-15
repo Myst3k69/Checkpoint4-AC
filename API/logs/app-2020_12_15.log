@@ -1,0 +1,407 @@
+{
+  message: 'GET / 200 218 - 7.293 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T15:42:22.196Z'
+}
+{
+  message: 'GET /stylesheets/style.css 404 1176 - 2.554 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T15:42:22.210Z'
+}
+{
+  message: 'GET /favicon.ico 404 1176 - 1.421 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T15:42:22.419Z'
+}
+{ level: 'error', timestamp: '2020-12-15T16:55:04.553Z' }
+{
+  message: 'POST /front 500 21 - 12.284 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T16:55:04.565Z'
+}
+{ level: 'error', timestamp: '2020-12-15T16:55:50.606Z' }
+{
+  message: 'POST /front 500 21 - 6.874 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T16:55:50.612Z'
+}
+{ level: 'error', timestamp: '2020-12-15T16:56:30.904Z' }
+{
+  message: 'POST /front 500 21 - 6.008 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T16:56:30.910Z'
+}
+{
+  message: 'GET / 200 218 - 5.446 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T16:56:38.764Z'
+}
+{ level: 'error', timestamp: '2020-12-15T16:57:15.882Z' }
+{
+  message: 'POST /front 500 21 - 9.952 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T16:57:15.892Z'
+}
+{ level: 'error', timestamp: '2020-12-15T16:57:42.939Z' }
+{
+  message: 'POST /front 500 21 - 18.180 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T16:57:42.944Z'
+}
+{ level: 'error', timestamp: '2020-12-15T16:58:00.848Z' }
+{
+  message: 'POST /front 500 21 - 37.187 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T16:58:00.863Z'
+}
+{ level: 'error', timestamp: '2020-12-15T16:58:28.976Z' }
+{
+  message: 'POST /front 500 21 - 52.780 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T16:58:28.992Z'
+}
+{
+  code: 'ER_DBACCESS_DENIED_ERROR',
+  errno: 1044,
+  sqlMessage: "Access denied for user 'faqosdb'@'%' to database 'Checkpoint4'",
+  sqlState: '42000',
+  fatal: true,
+  level: 'error',
+  timestamp: '2020-12-15T17:01:41.509Z'
+}
+{
+  message: 'POST /front 500 21 - 125.394 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:01:41.516Z'
+}
+{
+  code: 'ER_ACCESS_DENIED_ERROR',
+  errno: 1045,
+  sqlMessage: "Access denied for user 'root'@'89-86-76-89.abo.bbox.fr' (using password: YES)",
+  sqlState: '28000',
+  fatal: true,
+  level: 'error',
+  timestamp: '2020-12-15T17:02:14.682Z'
+}
+{
+  message: 'POST /front 500 21 - 79.560 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:02:14.688Z'
+}
+{
+  code: 'ER_DBACCESS_DENIED_ERROR',
+  errno: 1044,
+  sqlMessage: "Access denied for user 'checkpoint4'@'%' to database 'Checkpoint4'",
+  sqlState: '42000',
+  fatal: true,
+  level: 'error',
+  timestamp: '2020-12-15T17:04:24.687Z'
+}
+{
+  message: 'POST /front 500 21 - 1103.561 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:04:24.692Z'
+}
+{
+  code: 'ER_WRONG_VALUE_COUNT_ON_ROW',
+  errno: 1136,
+  sqlMessage: "Column count doesn't match value count at row 1",
+  sqlState: '21S01',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '29/03/2020', '29/03/2020', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:06:42.596Z'
+}
+{
+  message: 'POST /front 500 21 - 108.758 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:06:42.601Z'
+}
+{
+  code: 'ER_TRUNCATED_WRONG_VALUE',
+  errno: 1292,
+  sqlMessage: "Incorrect datetime value: '29/03/2020' for column 'date_Intervention' at row 1",
+  sqlState: '22007',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '29/03/2020', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:07:51.481Z'
+}
+{
+  message: 'POST /front 500 21 - 103.311 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:07:51.486Z'
+}
+{
+  code: 'ER_TRUNCATED_WRONG_VALUE',
+  errno: 1292,
+  sqlMessage: "Incorrect datetime value: '2020-12-15T17:07:51.481Z' for column 'date_Intervention' at row 1",
+  sqlState: '22007',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '2020-12-15T17:07:51.481Z', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:08:35.302Z'
+}
+{
+  message: 'POST /front 500 21 - 135.947 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:08:35.311Z'
+}
+{
+  code: 'ER_TRUNCATED_WRONG_VALUE',
+  errno: 1292,
+  sqlMessage: "Incorrect datetime value: '0000-00-00 00:00:00' for column 'date_Intervention' at row 1",
+  sqlState: '22007',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '0000-00-00 00:00:00', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:09:49.331Z'
+}
+{
+  message: 'POST /front 500 21 - 60.626 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:09:49.333Z'
+}
+{
+  code: 'ER_NO_DEFAULT_FOR_FIELD',
+  errno: 1364,
+  sqlMessage: "Field 'Cars_idCars' doesn't have a default value",
+  sqlState: 'HY000',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '2020-12-15 18:11:08.119', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:11:08.226Z'
+}
+{
+  message: 'POST /front 500 21 - 118.261 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:11:08.231Z'
+}
+{
+  code: 'ER_NO_DEFAULT_FOR_FIELD',
+  errno: 1364,
+  sqlMessage: "Field 'Professionnel_idProfessionnel' doesn't have a default value",
+  sqlState: 'HY000',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '2020-12-15 18:15:35.876', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:15:35.981Z'
+}
+{
+  message: 'POST /front 500 21 - 116.189 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:15:35.987Z'
+}
+{
+  code: 'ER_NO_DEFAULT_FOR_FIELD',
+  errno: 1364,
+  sqlMessage: "Field 'Creneaux_idCreneaux' doesn't have a default value",
+  sqlState: 'HY000',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '2020-12-15 18:16:03.468', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:16:03.522Z'
+}
+{
+  message: 'POST /front 500 21 - 82.058 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:16:03.524Z'
+}
+{
+  code: 'ER_NO_DEFAULT_FOR_FIELD',
+  errno: 1364,
+  sqlMessage: "Field 'Creneaux_Agenda_idAgenda' doesn't have a default value",
+  sqlState: 'HY000',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '2020-12-15 18:17:02.740', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:17:02.788Z'
+}
+{
+  message: 'POST /front 500 21 - 70.020 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:17:02.800Z'
+}
+{
+  code: 'ER_NO_REFERENCED_ROW_2',
+  errno: 1452,
+  sqlMessage: 'Cannot add or update a child row: a foreign key constraint fails (`Checkpoint4`.`Intervention`, CONSTRAINT `fk_Intervention_Cars1` FOREIGN KEY (`Cars_idCars`) REFERENCES `Cars` (`idCars`) ON DELETE NO ACTION ON UPDATE NO ACTION)',
+  sqlState: '23000',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '2020-12-15 18:18:11.230', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:18:11.284Z'
+}
+{
+  message: 'POST /front 500 21 - 57.108 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:18:11.286Z'
+}
+{
+  code: 'ER_NO_REFERENCED_ROW_2',
+  errno: 1452,
+  sqlMessage: 'Cannot add or update a child row: a foreign key constraint fails (`Checkpoint4`.`Intervention`, CONSTRAINT `fk_Intervention_Cars1` FOREIGN KEY (`Cars_idCars`) REFERENCES `Cars` (`idCars`) ON DELETE NO ACTION ON UPDATE NO ACTION)',
+  sqlState: '23000',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '2020-12-15 18:54:59.719', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:54:59.768Z'
+}
+{
+  message: 'POST /front 500 21 - 62.002 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:54:59.770Z'
+}
+{
+  code: 'ER_NO_REFERENCED_ROW_2',
+  errno: 1452,
+  sqlMessage: 'Cannot add or update a child row: a foreign key constraint fails (`Checkpoint4`.`Intervention`, CONSTRAINT `fk_Intervention_Cars1` FOREIGN KEY (`Cars_idCars`) REFERENCES `Cars` (`idCars`) ON DELETE NO ACTION ON UPDATE NO ACTION)',
+  sqlState: '23000',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '2020-12-15 18:55:23.826', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:55:23.918Z'
+}
+{
+  message: 'POST /front 500 21 - 104.457 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:55:23.924Z'
+}
+{
+  code: 'ER_BAD_DB_ERROR',
+  errno: 1049,
+  sqlMessage: "Unknown database 'Checkpoint4'",
+  sqlState: '42000',
+  fatal: true,
+  level: 'error',
+  timestamp: '2020-12-15T17:55:58.331Z'
+}
+{
+  message: 'POST /front 500 21 - 82.880 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:55:58.336Z'
+}
+{
+  code: 'ER_DBACCESS_DENIED_ERROR',
+  errno: 1044,
+  sqlMessage: "Access denied for user 'checkpoint4'@'%' to database 'checkpoint4'",
+  sqlState: '42000',
+  fatal: true,
+  level: 'error',
+  timestamp: '2020-12-15T17:56:15.048Z'
+}
+{
+  message: 'POST /front 500 21 - 87.012 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:56:15.053Z'
+}
+{
+  code: 'ER_BAD_FIELD_ERROR',
+  errno: 1054,
+  sqlMessage: "Unknown column 'Categories_idCategories' in 'field list'",
+  sqlState: '42S22',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,Categories_idCategories,date_Intervention,immat,email) VALUES ('Je suis en panne', '1', '2020-12-15 18:56:52.033', 'BG-256-YK', 'aurelien.chiren@gmail.com')  ",
+  level: 'error',
+  timestamp: '2020-12-15T17:56:52.121Z'
+}
+{
+  message: 'POST /front 500 21 - 98.067 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T17:56:52.123Z'
+}
+{
+  code: 'ER_WRONG_VALUE_COUNT_ON_ROW',
+  errno: 1136,
+  sqlMessage: "Column count doesn't match value count at row 1",
+  sqlState: '21S01',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,date_Intervention,immat,email) VALUES ('Je suis en panne', '2020-12-15 19:02:38.620', 'BG-256-YK', 'aurelien.chiren@gmail.com', '1', '1')  ",
+  level: 'error',
+  timestamp: '2020-12-15T18:02:38.713Z'
+}
+{
+  message: 'POST /front 500 21 - 107.466 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T18:02:38.718Z'
+}
+{
+  message: 'POST /front 200 48 - 128.384 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T18:03:23.713Z'
+}
+{
+  message: 'POST /front 200 48 - 55.420 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T18:14:24.164Z'
+}
+{
+  message: 'POST /front 200 48 - 50.679 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T18:17:46.762Z'
+}
+{
+  message: 'POST /front 200 48 - 103.916 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T18:22:56.428Z'
+}
+{
+  message: 'POST /front 200 48 - 53.209 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T20:23:13.531Z'
+}
+{
+  message: 'POST /front 200 48 - 89.702 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T21:48:28.198Z'
+}
+{
+  message: 'POST /front 200 48 - 54.730 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T21:51:49.424Z'
+}
+{
+  message: 'POST /front 200 48 - 97.065 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T21:53:27.268Z'
+}
+{
+  message: 'POST /front 200 48 - 58.675 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T21:58:31.451Z'
+}
+{
+  message: 'POST /front 200 49 - 105.809 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:02:57.327Z'
+}
+{
+  code: 'ER_TRUNCATED_WRONG_VALUE_FOR_FIELD',
+  errno: 1366,
+  sqlMessage: "Incorrect integer value: 'undefined' for column 'id_categories' at row 1",
+  sqlState: 'HY000',
+  index: 0,
+  sql: " INSERT INTO  Intervention ( motif_Intervention,date_Intervention,immat,email, id_pro,id_categories) VALUES ('je suis complètement à l\\'arrêt, de la fumée s\\'échappe du moteur', '2020-12-15 23:12:02.021', 'GL-256-RX', 'bigbang999@hotmail.fr', 3, 'undefined')  ",
+  level: 'error',
+  timestamp: '2020-12-15T22:12:02.067Z'
+}
+{
+  message: 'POST /front 500 21 - 49.741 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:12:02.068Z'
+}
+{
+  message: 'POST /front 200 49 - 55.800 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:16:34.292Z'
+}
+{
+  message: 'POST /front 200 49 - 106.630 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:19:50.501Z'
+}
+{
+  message: 'POST /front 200 49 - 98.455 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:23:14.494Z'
+}

@@ -11,6 +11,7 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/pickers": "^3.2.10",
     "@randex/material-ui-multiple-dates-picker": "^0.3.0",
+    "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "classnames": "2.2.6",
     "date-fns": "^2.0.0-beta.5",
