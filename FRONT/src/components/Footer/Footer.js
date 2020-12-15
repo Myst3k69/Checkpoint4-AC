@@ -1,3 +1,4 @@
+
 /*eslint-disable*/
 import React from "react";
 // nodejs library to set properties for components
@@ -37,7 +38,7 @@ export default function Footer(props) {
                 className={classes.block}
                 target="_blank"
               >
-                Creative Tim
+                Prestations
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
@@ -46,7 +47,7 @@ export default function Footer(props) {
                 className={classes.block}
                 target="_blank"
               >
-                About us
+                Espace pros
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
@@ -55,7 +56,7 @@ export default function Footer(props) {
                 className={classes.block}
                 target="_blank"
               >
-                Blog
+                Social-car.com
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
@@ -64,7 +65,7 @@ export default function Footer(props) {
                 className={classes.block}
                 target="_blank"
               >
-                Licenses
+                A propos
               </a>
             </ListItem>
           </List>
@@ -77,7 +78,7 @@ export default function Footer(props) {
             className={aClasses}
             target="_blank"
           >
-            Creative Tim
+            Aurélien C.
           </a>{" "}
           for a better web.
         </div>

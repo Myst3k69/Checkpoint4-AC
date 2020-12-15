@@ -28,7 +28,7 @@ const buttonStyle = {
     willChange: "box-shadow, transform",
     transition:
       "box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-    lineHeight: "1.42857143",
+    lineHeight: "1.2857143",
     textAlign: "center",
     whiteSpace: "nowrap",
     verticalAlign: "middle",
@@ -44,7 +44,7 @@ const buttonStyle = {
       position: "relative",
       display: "inline-block",
       top: "0",
-      fontSize: "1.1rem",
+      fontSize: ".1rem",
       marginRight: "4px",
       verticalAlign: "middle"
     },
@@ -52,10 +52,11 @@ const buttonStyle = {
       position: "relative",
       display: "inline-block",
       top: "0",
-      width: "18px",
-      height: "18px",
+      width: "45px",
+      height: "45px",
       marginRight: "4px",
-      verticalAlign: "middle"
+      verticalAlign: "middle",
+      Color:"#00acc1"
     },
     "&$justIcon": {
       "& .fab,& .fas,& .far,& .fal,& .material-icons": {
@@ -137,7 +138,7 @@ const buttonStyle = {
   white: {
     "&,&:focus,&:hover,&:visited": {
       backgroundColor: "#FFFFFF",
-      color: grayColor
+      color: 'white'
     }
   },
   twitter: {

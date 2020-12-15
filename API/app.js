@@ -1,24 +1,76 @@
-const cookieParser = require('cookie-parser');
-const express = require('express');
-const httpErrors = require('http-errors');
-const logger = require('morgan');
-const path = require('path');
-
-const indexRouter = require('./routes/index');
-
+//  Third-party middleware
+const express = require("express");
 const app = express();
+const cookieParser = require("cookie-parser");
+const httpErrors = require("http-errors");
+const morgan = require("morgan");
+const logger = require('./library/logger')
+const path = require("path");
+let cors = require("cors");
+require("dotenv/config");
+let bodyParser = require("body-parser");
 
-app.set('views', path.join(__dirname, 'views'));
+
+// Security middleware
+const helmet = require("helmet");
+const hpp = require("hpp");
+const xss = require("xss-clean");
+const mongoSanitize = require('express-mongo-sanitize');  // Uncomment if you use mongodb
+const rateLimit = require("express-rate-limit");
+
+const limit = rateLimit({
+
+  max: 2500, // max requests
+
+  windowMs: 60 * 60 * 1000, // 1 Hour of 'ban' / lockout
+  message: "Too many requests", // message to send
+});
+
+// Routing
+const indexRouter = require("./routes/index");
+
+const userRouter = require("./routes/backoffice/user");
+const postRouter = require("./routes/backoffice/post");
+const loginRouter = require("./routes/backoffice/login");
+const BookingRouter = require("./routes/front/booking.js")
+
+
+
+// Secure API
+app.use(helmet());
+app.use(limit);
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+//HTTP Parameters Pollution
+app.use(hpp());
+app.use(xss());
+app.use(mongoSanitize());
+
+// parse application/json
+app.use(bodyParser.json());
+app.use(cors());
+//app.use(morgan('tiny', {stream: logger.stream}))
+app.use(morgan('tiny', {stream: logger.stream}))
+// Router middleware
+app.use("/", indexRouter);
+app.use("/front", BookingRouter);
+app.use("/back/users", userRouter);
+app.use("/back/posts", postRouter);
+app.use("/back/login", loginRouter);
+
+app.set("views", path.join(__dirname, "views"));
+
 // view engine setup
-app.set('view engine', 'ejs');
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.set("view engine", "ejs");
+
+
+app.use(express.json({ limit: "1kb" }));
+app.use(express.urlencoded({ extended: false, limit: "1kb" }));
 app.use(cookieParser());
-
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/", indexRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -29,11 +81,11 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render("error");
 });
 
 module.exports = app;
