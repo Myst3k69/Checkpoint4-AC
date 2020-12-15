@@ -1,4 +1,4 @@
-const Intervention = require("../models/intervention.model");;
+const Intervention = require("../models/intervention.model");
 const logger = require("../library/logger");
 const mailer = require("../library/mailer");
 const { mailOptions } = require("../datasource/mails");
@@ -7,224 +7,240 @@ const { Console } = require("winston/lib/winston/transports");
 class BookingController {
 
 
+  // Add a booking in database
+  static async addBooking(req, res) {
+    console.log("CONTROLLER ADDBOOKING");
+
+    const { motif_intervention, date, immat, email, pro, categorie } = req.body;
+    console.log("req body : ", req.body);
+
+    const dateNow = new Date();
+
+    try {
+      const fields = [
+        [motif_intervention, dateNow, immat, email, pro, categorie],
+      ];
+
+      const queryResult = await Intervention.create(fields);
+
+      if (queryResult.affectedRows > 0) {
+        // send mail with defined transport object
+        mailer(mailOptions.newIntervention(email, immat, date));
+
+        res.send({
+          message: "Booking  successfully added",
+          id: queryResult.insertId,
+        });
+      } else {
+        res.status(404).send({ error: "Nothing added" });
+      }
+    } catch (err) {
+      // fin du try
+      console.log(err);
+      logger.error(err);
+      res.sendStatus(500);
+    }
+  }
+
+
+
 
 // Add a booking in database
-    static async addBooking(req, res) {
+static async getInterventions(req, res) {
+  
+  
+  try {
+   
 
-        console.log("CONTROLLER ADDBOOKING")
-        
-        const { motif_intervention ,date, immat, email, pro,categorie } = req.body;
-        console.log("req body : ",req.body)
+    const queryResult = await Intervention.read();
 
-        const dateNow= new Date();
-    
-        try {
-            
+   
       
-          
-      
-            const fields = [[motif_intervention , dateNow,immat, email,pro, categorie ]];
-      
-            const queryResult = await Intervention.create(fields);
-      
-            if (queryResult.affectedRows > 0) {
 
-        // send mail with defined transport object
-        mailer(mailOptions.newIntervention(email,immat,date));
-
-
-              res.send({
-                message: "Booking  successfully added",
-                id: queryResult.insertId,
-              });
-            } else {
-              res.status(404).send({ error: "Nothing added" });
-            }
-          } catch (err) {
-            // fin du try
-      console.log(err)
-            logger.error(err);
-            res.sendStatus(500);
-          }
-      }
+      res.send(queryResult);
+    } 
+   catch (err) {
+    // fin du try
+    console.log(err);
+    logger.error(err);
+    res.sendStatus(500);
+  }
+}
 
 
 
 
+  //   static async update(req, res) {
+  //     try {
+  //       if (req.body.action === "update") {
+  //         validator.checkResponse;
 
+  //         PostController.updatePost(req, res);
+  //       } else {
+  //         validator.checkIdUser;
+  //         PostController.updatePostStatus(req, res);
+  //       }
+  //     } catch (err) {
+  //       // fin du try
 
+  //       logger.error(err);
+  //       res.sendStatus(500);
+  //     }
+  //   }
 
-//   static async update(req, res) {
-//     try {
-//       if (req.body.action === "update") {
-//         validator.checkResponse;
+  //   // Archive or Publish a post
+  //   static async updatePostStatus(req, res) {
+  //     try {
+  //       let idQuestion = req.params.id;
+  //       const { idUser, action } = req.body;
 
-//         PostController.updatePost(req, res);
-//       } else {
-//         validator.checkIdUser;
-//         PostController.updatePostStatus(req, res);
-//       }
-//     } catch (err) {
-//       // fin du try
+  //       let fields = {};
+  //       if (action === "publish") {
+  //         fields = {
+  //           publicated_by: idUser,
+  //           publicated_at: new Date(),
+  //           disabled_by: null,
+  //           disabled_at: null,
+  //         };
 
-//       logger.error(err);
-//       res.sendStatus(500);
-//     }
-//   }
+  //         const queryResult = await Post.update(idQuestion, fields);
 
-//   // Archive or Publish a post
-//   static async updatePostStatus(req, res) {
-//     try {
-//       let idQuestion = req.params.id;
-//       const { idUser, action } = req.body;
+  //         const getMail = await User.read("where id=", idUser);
 
-//       let fields = {};
-//       if (action === "publish") {
-//         fields = {
-//           publicated_by: idUser,
-//           publicated_at: new Date(),
-//           disabled_by: null,
-//           disabled_at: null,
-//         };
+  //         // send mail with defined transport object
+  //         mailer(mailOptions.newPost(getMail[0].mail, idQuestion));
 
-//         const queryResult = await Post.update(idQuestion, fields);
+  //         res.send("post published");
+  //       } else if (action === "archive") {
+  //         fields = {
+  //           disabled_by: idUser,
+  //           disabled_at: new Date(),
+  //           publicated_by: null,
+  //           publicated_at: null,
+  //         };
+  //         const queryResult = await Post.update(idQuestion, fields);
+  //         res.send({ message: "post archived" });
+  //       } else {
+  //         return res
+  //           .status(400)
+  //           .send({ message: "Please type a valid action : publish or archive" });
+  //       }
+  //     } catch (err) {
+  //       // fin du try
 
-//         const getMail = await User.read("where id=", idUser);
+  //       logger.error(err);
+  //       res.sendStatus(500);
+  //     }
+  //   }
 
-//         // send mail with defined transport object
-//         mailer(mailOptions.newPost(getMail[0].mail, idQuestion));
+  //   static async updatePost(req, res) {
+  //     try {
+  //       let idQuestion = req.params.id;
+  //       const { titre_question, contenu_question, contenu_reponse } = req.body;
 
-//         res.send("post published");
-//       } else if (action === "archive") {
-//         fields = {
-//           disabled_by: idUser,
-//           disabled_at: new Date(),
-//           publicated_by: null,
-//           publicated_at: null,
-//         };
-//         const queryResult = await Post.update(idQuestion, fields);
-//         res.send({ message: "post archived" });
-//       } else {
-//         return res
-//           .status(400)
-//           .send({ message: "Please type a valid action : publish or archive" });
-//       }
-//     } catch (err) {
-//       // fin du try
+  //       const fields = {
+  //         titre: titre_question,
+  //         "question.contenu": contenu_question,
+  //         "reponse.contenu": contenu_reponse,
+  //       };
 
-//       logger.error(err);
-//       res.sendStatus(500);
-//     }
-//   }
+  //       const queryResult = await Post.updatePost(idQuestion, fields);
 
-//   static async updatePost(req, res) {
-//     try {
-//       let idQuestion = req.params.id;
-//       const { titre_question, contenu_question, contenu_reponse } = req.body;
+  //       if (queryResult.affectedRows > 0) {
+  //         res.send({ message: "Post successfully updated" });
+  //       } else {
+  //         res.status(404).send({ error: "Nothing updated" });
+  //       }
+  //     } catch (err) {
+  //       // fin du try
 
-//       const fields = {
-//         titre: titre_question,
-//         "question.contenu": contenu_question,
-//         "reponse.contenu": contenu_reponse,
-//       };
+  //       logger.error(err);
+  //       res.sendStatus(500);
+  //     }
+  //   }
 
-//       const queryResult = await Post.updatePost(idQuestion, fields);
+  //   static async addResponse(req, res) {
+  //     try {
+  //       const { question_id, contenu } = req.body;
+  //       const created_by = "2";
+  //       const created_at = new Date();
 
-//       if (queryResult.affectedRows > 0) {
-//         res.send({ message: "Post successfully updated" });
-//       } else {
-//         res.status(404).send({ error: "Nothing updated" });
-//       }
-//     } catch (err) {
-//       // fin du try
+  //       const fields = [[question_id, contenu, created_by, created_at]];
 
-//       logger.error(err);
-//       res.sendStatus(500);
-//     }
-//   }
+  //       const queryResult = await Post.addResponse(fields);
 
-//   static async addResponse(req, res) {
-//     try {
-//       const { question_id, contenu } = req.body;
-//       const created_by = "2";
-//       const created_at = new Date();
+  //       if (queryResult.affectedRows > 0) {
+  //         res.send({ message: "Reponse successfully added" });
+  //       } else {
+  //         res.status(404).send({ error: "Nothing added" });
+  //       }
+  //     } catch (err) {
+  //       // fin du try
 
-//       const fields = [[question_id, contenu, created_by, created_at]];
+  //       logger.error(err);
+  //       res.sendStatus(500);
+  //     }
+  //   }
 
-//       const queryResult = await Post.addResponse(fields);
+  //   static async addQuestion(req, res) {
+  //     try {
+  //       const { titre_question, contenu_question } = req.body;
 
-//       if (queryResult.affectedRows > 0) {
-//         res.send({ message: "Reponse successfully added" });
-//       } else {
-//         res.status(404).send({ error: "Nothing added" });
-//       }
-//     } catch (err) {
-//       // fin du try
+  //       const created_by = "2";
 
-//       logger.error(err);
-//       res.sendStatus(500);
-//     }
-//   }
+  //       const fields = [[titre_question, contenu_question, created_by]];
 
-//   static async addQuestion(req, res) {
-//     try {
-//       const { titre_question, contenu_question } = req.body;
+  //       const queryResult = await Post.addQuestion(fields);
 
-//       const created_by = "2";
+  //       if (queryResult.affectedRows > 0) {
+  //         res.send({
+  //           message: "Question successfully added",
+  //           id: queryResult.insertId,
+  //         });
+  //       } else {
+  //         res.status(404).send({ error: "Nothing added" });
+  //       }
+  //     } catch (err) {
+  //       // fin du try
 
-//       const fields = [[titre_question, contenu_question, created_by]];
+  //       logger.error(err);
+  //       res.sendStatus(500);
+  //     }
+  //   }
 
-//       const queryResult = await Post.addQuestion(fields);
+  //   static async addPost(req, res) {
+  //     const { type } = req.body;
 
-//       if (queryResult.affectedRows > 0) {
-//         res.send({
-//           message: "Question successfully added",
-//           id: queryResult.insertId,
-//         });
-//       } else {
-//         res.status(404).send({ error: "Nothing added" });
-//       }
-//     } catch (err) {
-//       // fin du try
+  //     try {
+  //       // Add a response
+  //       if (type == "reponse") {
+  //         PostController.addResponse(req, res);
 
-//       logger.error(err);
-//       res.sendStatus(500);
-//     }
-//   }
+  //         // Add a question
+  //       }
+  //       if (req.body.type == "question") {
+  //         PostController.addQuestion(req, res);
+  //       }
+  //     } catch (err) {
+  //       // fin du try
 
-//   static async addPost(req, res) {
-//     const { type } = req.body;
+  //       logger.error(err);
+  //       res.sendStatus(500);
+  //     }
+  //   }
 
-//     try {
-//       // Add a response
-//       if (type == "reponse") {
-//         PostController.addResponse(req, res);
+  //   static async getPosts(req, res) {
+  //     try {
+  //       const queryResult = await Post.getAll();
 
-//         // Add a question
-//       }
-//       if (req.body.type == "question") {
-//         PostController.addQuestion(req, res);
-//       }
-//     } catch (err) {
-//       // fin du try
+  //       res.send(queryResult);
+  //     } catch (err) {
+  //       // fin du try
 
-//       logger.error(err);
-//       res.sendStatus(500);
-//     }
-//   }
-
-//   static async getPosts(req, res) {
-//     try {
-//       const queryResult = await Post.getAll();
-
-//       res.send(queryResult);
-//     } catch (err) {
-//       // fin du try
-
-//       logger.error(err);
-//       res.sendStatus(500);
-//     }
-//   }
+  //       logger.error(err);
+  //       res.sendStatus(500);
+  //     }
+  //   }
 }
 
 module.exports = BookingController;

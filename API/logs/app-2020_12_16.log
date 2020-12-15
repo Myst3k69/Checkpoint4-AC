@@ -1,0 +1,10 @@
+{
+  message: 'GET /back/interventions 200 49 - 42.171 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T23:00:13.200Z'
+}
+{
+  message: 'GET /back/interventions 404 27 - 84.506 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T23:02:12.331Z'
+}
