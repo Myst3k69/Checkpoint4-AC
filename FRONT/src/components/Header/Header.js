@@ -16,6 +16,9 @@ import Menu from "@material-ui/icons/Menu";
 // core components
 import styles from "assets/jss/material-kit-react/components/headerStyle.js";
 
+// Own style
+require("../../assets/css/homepage.css")
+
 const useStyles = makeStyles(styles);
 
 export default function Header(props) {
@@ -40,7 +43,7 @@ export default function Header(props) {
     if (windowsScrollTop > changeColorOnScroll.height) {
       document.body
         .getElementsByTagName("header")[0]
-        .classList.remove(classes[color]);
+         .classList.remove(classes[color]);
       document.body
         .getElementsByTagName("header")[0]
         .classList.add(classes[changeColorOnScroll.color]);
@@ -60,10 +63,12 @@ export default function Header(props) {
     [classes.absolute]: absolute,
     [classes.fixed]: fixed
   });
-  const brandComponent = <Button className={classes.title}>{brand}</Button>;
+  const brandComponent = <Button className={classes.title} className="brandButton">{brand}</Button>;
+  
   return (
-    <AppBar className={appBarClasses}>
-      <Toolbar className={classes.container}>
+    <AppBar className={appBarClasses} >
+    
+      <Toolbar className={classes.container} >
         {leftLinks !== undefined ? brandComponent : null}
         <div className={classes.flex}>
           {leftLinks !== undefined ? (
@@ -72,6 +77,7 @@ export default function Header(props) {
             </Hidden>
           ) : (
             brandComponent
+            
           )}
         </div>
         <Hidden smDown implementation="css">
@@ -108,7 +114,8 @@ export default function Header(props) {
 }
 
 Header.defaultProp = {
-  color: "white"
+  color: "white",
+  opacity:0.3
 };
 
 Header.propTypes = {
@@ -121,12 +128,14 @@ Header.propTypes = {
     "transparent",
     "white",
     "rose",
-    "dark"
+    "dark",
+    "whitesmoke",
   ]),
   rightLinks: PropTypes.node,
   leftLinks: PropTypes.node,
   brand: PropTypes.string,
   fixed: PropTypes.bool,
+  opacity:PropTypes.oneOf(["0.5"]),
   absolute: PropTypes.bool,
   // this will cause the sidebar to change the color from
   // props.color (see above) to changeColorOnScroll.color

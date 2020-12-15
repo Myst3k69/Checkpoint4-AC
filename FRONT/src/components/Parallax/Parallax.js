@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // core components
 import styles from "assets/jss/material-kit-react/components/parallaxStyle.js";
+import { CenterFocusStrong } from "@material-ui/icons";
 
 const useStyles = makeStyles(styles);
 
@@ -49,7 +50,10 @@ export default function Parallax(props) {
       style={{
         ...style,
         backgroundImage: "url(" + image + ")",
-        transform: transform
+        transform: transform,
+        backgroundSize:"cover",
+        backgroundPosition:"center",
+        backgroundRepeat: "no-repeat"
       }}
     >
       {children}
