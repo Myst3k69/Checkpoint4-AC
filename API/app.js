@@ -33,6 +33,7 @@ const userRouter = require("./routes/backoffice/user");
 const postRouter = require("./routes/backoffice/post");
 const loginRouter = require("./routes/backoffice/login");
 const BookingRouter = require("./routes/front/booking.js")
+const BackRouter = require("./routes/backoffice/interventions")
 
 
 
@@ -59,6 +60,7 @@ app.use("/front", BookingRouter);
 app.use("/back/users", userRouter);
 app.use("/back/posts", postRouter);
 app.use("/back/login", loginRouter);
+app.use("/back/interventions", BackRouter);
 
 app.set("views", path.join(__dirname, "views"));
 

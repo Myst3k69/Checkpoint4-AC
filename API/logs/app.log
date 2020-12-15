@@ -2682,3 +2682,108 @@
   level: 'info',
   timestamp: '2020-12-15T22:23:14.494Z'
 }
+{
+  message: 'GET / 200 218 - 6.298 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:39:06.445Z'
+}
+{
+  message: 'GET /stylesheets/style.css 404 1176 - 4.025 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:39:06.473Z'
+}
+{
+  code: 'ER_NO_SUCH_TABLE',
+  errno: 1146,
+  sqlMessage: "Table 'checkpoint4.user' doesn't exist",
+  sqlState: '42S02',
+  index: 0,
+  sql: "SELECT COUNT(id) as count FROM user WHERE mail='aurelienchiren@gmail.com' AND pass='aurelien9'",
+  level: 'error',
+  timestamp: '2020-12-15T22:43:58.983Z'
+}
+{
+  message: 'POST /back/login 500 21 - 88.580 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:43:58.985Z'
+}
+{
+  message: 'GET /back/users?withRoles=true 500 13 - 0.566 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:44:54.347Z'
+}
+{
+  message: 'GET /back/posts 500 13 - 0.246 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:44:54.349Z'
+}
+{
+  message: 'GET /back/users?withRoles=true 500 13 - 0.278 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:45:22.761Z'
+}
+{
+  message: 'GET /back/posts 500 13 - 0.271 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:45:22.763Z'
+}
+{
+  message: 'GET /back/users?withRoles=true 500 13 - 0.904 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:45:29.419Z'
+}
+{
+  message: 'GET /back/posts 500 13 - 0.245 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:45:29.421Z'
+}
+{
+  message: 'GET /back/posts 500 13 - 0.252 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:45:36.595Z'
+}
+{
+  message: 'GET /back/users?withRoles=true 500 13 - 0.249 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:45:36.597Z'
+}
+{
+  message: 'GET /back/users?withRoles=true 500 13 - 0.231 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:45:41.517Z'
+}
+{
+  message: 'GET /back/posts 500 13 - 0.219 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:45:41.518Z'
+}
+{
+  message: 'GET /back/posts 500 13 - 0.237 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:47:09.934Z'
+}
+{
+  message: 'GET /back/posts 500 13 - 0.348 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:54:06.434Z'
+}
+{
+  message: 'GET /back/posts 500 13 - 0.243 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:57:42.076Z'
+}
+{
+  message: 'GET /back/interventions 200 49 - 47.570 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T22:59:15.079Z'
+}
+{
+  message: 'GET /back/interventions 200 49 - 42.171 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T23:00:13.200Z'
+}
+{
+  message: 'GET /back/interventions 404 27 - 84.506 ms\n',
+  level: 'info',
+  timestamp: '2020-12-15T23:02:12.331Z'
+}
