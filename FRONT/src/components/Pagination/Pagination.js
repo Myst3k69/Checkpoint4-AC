@@ -31,7 +31,7 @@ export default function Pagination(props) {
               </Button>
             ) : (
               <Button
-                onClick={() => alert("you've clicked " + prop.text)}
+                onClick//TODO : Mettre la fonction de pagination ici
                 className={paginationLink}
               >
                 {prop.text}

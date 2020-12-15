@@ -136,7 +136,6 @@ export default function SectionLastConsultations(props) {
           </div>
         </div>
       </div>
-      {/* <img src={fonduImage}></img> */}
     </>
   );
 }
